@@ -27,7 +27,7 @@ GROQ_API_KEY = config('GROQ_API_KEY')
 HF_API_KEY = config('HF_API_KEY')
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['toolifyai-y0cf.onrender.com','127.0.0.0.1:8000']
 
 
 # Application definition
