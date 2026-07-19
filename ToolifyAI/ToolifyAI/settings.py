@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,9 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 GROQ_API_KEY = config('GROQ_API_KEY')
 HF_API_KEY = config('HF_API_KEY')
-DEBUG = True
+DEBUG = config('DEBUG', default='False', cast=bool)
 
-ALLOWED_HOSTS = ['toolifyai-y0cf.onrender.com','127.0.0.1:8000']
+# ALLOWED_HOSTS: read from env for flexibility across environments
+_allowed_hosts_env = config('ALLOWED_HOSTS', default='')
+ALLOWED_HOSTS = [h.strip() for h in _allowed_hosts_env.split(',') if h.strip()] or [
+    '127.0.0.1',
+    'localhost',
+]
 
 
 # Application definition
@@ -51,6 +57,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -59,10 +66,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
 ]
+
+# CSRF trusted origins: build from ALLOWED_HOSTS automatically
 CSRF_TRUSTED_ORIGINS = [
-    "https://toolifyai-y0cf.onrender.com",
-    "http://127.0.0.1:8000"
-]
+    f"https://{host}" for host in ALLOWED_HOSTS if host not in ('127.0.0.1', 'localhost')
+] + ["http://127.0.0.1:8000", "http://localhost:8000"]
 
 SITE_ID = 1
 
@@ -158,3 +166,4 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

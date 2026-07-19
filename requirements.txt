@@ -6,7 +6,8 @@ cryptography
 groq
 huggingface_hub
 qrcode
-torch==2.3.1+cpu
+torch==2.6.0+cpu
+scikit-learn
 joblib
 numpy
 requests
@@ -14,3 +15,6 @@ httpx
 python-decouple
 PyYAML
 PyJWT
+whitenoise
+gunicorn
+Pillow
