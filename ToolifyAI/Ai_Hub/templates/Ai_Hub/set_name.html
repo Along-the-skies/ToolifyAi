@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome — ToolifyAI</title>
+    <link rel="stylesheet" href="{% static 'Ai_Hub/style.css' %}">
+</head>
+<body>
+    <div class="auth-card">
+        <h1>What can we call you?</h1>
+        <p class="auth-subtitle">This is how ToolifyAI will greet you.</p>
+
+        <form method="POST" class="auth-form">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Your name" required autofocus>
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+</body>
+</html>

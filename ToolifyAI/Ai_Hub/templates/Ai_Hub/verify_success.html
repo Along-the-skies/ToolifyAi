@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verified — ToolifyAI</title>
+    <link rel="stylesheet" href="{% static 'Ai_Hub/style.css' %}">
+</head>
+<body>
+    <div class="auth-card status-card">
+        <div class="status-icon success">✓</div>
+        <h1>Email verified</h1>
+        <p class="auth-subtitle">Your account is ready. Welcome to ToolifyAI.</p>
+        <a href="{% url 'Ai_Hub:home' %}" class="google-btn">Go to ToolifyAI</a>
+    </div>
+</body>
+</html>

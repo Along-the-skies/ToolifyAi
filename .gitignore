@@ -1,0 +1,19 @@
+# Environment variables -- NEVER commit this, it holds real secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+env/
+
+# Django
+db.sqlite3
+staticfiles/
+*.log
+
+# Editor/OS junk
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

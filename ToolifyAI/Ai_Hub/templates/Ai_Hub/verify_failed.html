@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Failed — ToolifyAI</title>
+    <link rel="stylesheet" href="{% static 'Ai_Hub/style.css' %}">
+</head>
+<body>
+    <div class="auth-card status-card">
+        <div class="status-icon failure">✕</div>
+        <h1>Verification failed</h1>
+        <p class="auth-subtitle">{{ reason }}</p>
+        <a href="{% url 'Ai_Hub:signup' %}" class="google-btn">Back to Sign Up</a>
+    </div>
+</body>
+</html>
