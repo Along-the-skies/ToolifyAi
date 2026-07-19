@@ -27,7 +27,7 @@ GROQ_API_KEY = config('GROQ_API_KEY')
 HF_API_KEY = config('HF_API_KEY')
 DEBUG = True
 
-ALLOWED_HOSTS = ['toolifyai-y0cf.onrender.com','127.0.0.0.1:8000']
+ALLOWED_HOSTS = ['toolifyai-y0cf.onrender.com','127.0.0.1:8000']
 
 
 # Application definition
@@ -58,6 +58,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://toolifyai-y0cf.onrender.com",
+    "http://127.0.0.1:8000"
 ]
 
 SITE_ID = 1
