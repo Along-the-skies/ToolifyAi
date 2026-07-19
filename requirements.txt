@@ -1,10 +1,12 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 Django
 django-allauth
 cryptography
 groq
 huggingface_hub
 qrcode
-torch==2.3.1+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.3.1+cpu
 joblib
 numpy
 requests
